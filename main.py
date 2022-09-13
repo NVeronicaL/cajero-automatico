@@ -17,6 +17,7 @@ with open('data/opciones.json') as f:
 
 respuesta = 'SI'
 
+# fun: obtiene un solo cbu
 def obtener_cbu(lista_cards, clave_user):
     cbu_origen = ''
     for card in lista_cards['tarjetas']:
@@ -25,7 +26,7 @@ def obtener_cbu(lista_cards, clave_user):
             break
     return cbu_origen
 
-
+# fun: obtiene todos los cbus
 def obtener_cbus(lista_cards):
     lista_cbus = []
     for cbu in lista_cards['tarjetas']:
@@ -36,6 +37,7 @@ def obtener_cbus(lista_cards):
     
 #print(obtener_cbus(lista_cards))
 
+# fun: verifica si exite el cbu del usuario.
 def existe_cbu(cbu):
     lista_cbus = []
     existe_cbu = False
@@ -48,9 +50,8 @@ def existe_cbu(cbu):
             break
     return existe_cbu
 
+# fun: incrementa el saldo del usuario.
 def incrementar_saldo(cbu_detination, saldo):
-    # buscar el cbu del usuario
-    # acceder a saldo e incrementar 
     for card in lista_cards['tarjetas']:
         #print(card)
         if card['cbu'] == cbu_detination:
@@ -58,6 +59,7 @@ def incrementar_saldo(cbu_detination, saldo):
             print("nuevo saldo del destinacion: ", card['saldo'])
             break
 
+# fun: decrementa el saldo del usuario.
 def decrementar_saldo(cbu_origen, saldo):
     for card in lista_cards['tarjetas']:
         #print(card)
@@ -66,6 +68,7 @@ def decrementar_saldo(cbu_origen, saldo):
             print("nuevo saldo del origen: ", card['saldo'])
             break
 
+# fun: obtiene el saldo del usuario
 def obtener_saldo(lista_cards, cbu):
     saldo_origen = 0
     for card in lista_cards['tarjetas']:
@@ -74,6 +77,7 @@ def obtener_saldo(lista_cards, cbu):
             break
     return saldo_origen
 
+# fun: verifica si exite la clave del usuario.
 def existe_clave(clave_user):
     lista_claves = []
     existe_clave = False
@@ -86,7 +90,7 @@ def existe_clave(clave_user):
             break
     return existe_clave
 
-
+# fun: Encrripta la clave del usuario.
 def encriptar(clave_user):
     clave_encriptada = ' '
     for i in range(len(clave_user)):
@@ -94,7 +98,7 @@ def encriptar(clave_user):
     print(clave_encriptada)
     return clave_encriptada
 
-
+# fun: mensaje de bienvenida para el usuario.
 def mensaje(lista_cards, clave_user):
     for card in lista_cards['tarjetas']:
         if card['clave'] == clave_user:
@@ -115,20 +119,16 @@ while True:
     else:
         print("\n❌ Error 🙁, contraseña no  válida")
 
-# print("cbu_origen: ", cbu_origen)
-#menu = ['Deposito', 'Extracción', 'Transferencia', 'Ver Saldo', 'Salir']
 while (lista_opciones['opciones'] != [] and respuesta == 'SI' and existe_clave(clave_user)):
     print("respuesta", respuesta)
     print("\n+++++++++++++++++++++++++++++++++++++++++++++++++")
     print("\t\t MENU DE OPCIONES")
     print("+++++++++++++++++++++++++++++++++++++++++++++++++")
 
-
     for op in lista_opciones['opciones']:
         print("|------>", op['opcion'], "-", op['nombre'])
 
     op_elegida = int(input("\nIngresa una opcion: "))
-    #print("opcion elegida: ", type(op_elegida))
 
     for op in lista_opciones['opciones']:
         if op['opcion'] == op_elegida:
@@ -152,7 +152,6 @@ while (lista_opciones['opciones'] != [] and respuesta == 'SI' and existe_clave(c
                     break
                 else:
                     print("\n❌ Error 🙁, porfavor ingrese  un CBU válido")
-                    # cbu_detination = input("Ingrese un CBU destino: ")
         case 1:
             monto = input("Ingresa un monto 💲: ")
             print("\n✅ Felicidades la operación de", op_elegida, "se realizo con Exito!😀")
