@@ -1,0 +1,6 @@
+Depositos
+    El proyecto crashea al querer depositar una string
+    Si yo me deposito a mi mismo no se actualiza mi saldo
+Extracción
+    No poder extraer mas que mi saldo
+

@@ -1,0 +1,40 @@
+Archivo main.py
+    #59 corregí error de sintáxis
+    #68 corregí error de sintáxis
+    #120 quite un espacio en el print
+    #123 comente línea
+    #125 saque un tab y corregí error ortográfico
+    #131 corregí error ortográfico
+    #139 comente línea
+    #144 comente línea
+    #146 corregí error ortográfico
+    #149 corregí errores ortográficos
+    #150 corregí error ortográfico
+    #154 corregí error ortográfico
+    #155 comente línea
+    #156 corregí error ortográfico
+    #157 corregí error ortográfico
+    #157 cambie lo que se printea (de "op_elegida a "op['nombre']")
+    #158 corregí error ortográfico
+    #160 comente línea
+    #164 corregí error ortográfico
+    #168 corregí errores ortográficos
+    #168 cambie lo que se printea (de "op_elegida a "op['nombre']")
+    #169 corregí error ortográfico
+    #173 corregí error ortográfico
+    #176 comente línea
+    #178 comente línea
+    #180 cambie lo que se printea (mejor redacción)
+    #181 corregí error ortográfico
+    #184 comente línea
+    #185 corregí error ortográfico
+    #191 corregí errores ortográficos
+
+
+
+
+
+
+
+
+

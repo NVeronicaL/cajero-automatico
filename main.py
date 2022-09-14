@@ -56,7 +56,7 @@ def incrementar_saldo(cbu_detination, saldo):
         #print(card)
         if card['cbu'] == cbu_detination:
             card['saldo'] = str(obtener_saldo(lista_cards, cbu_detination) + saldo)
-            print("nuevo saldo del destinacion: ", card['saldo'])
+            print("Nuevo saldo del destinatario: ", card['saldo'])
             break
 
 # fun: decrementa el saldo del usuario.
@@ -65,7 +65,7 @@ def decrementar_saldo(cbu_origen, saldo):
         #print(card)
         if card['cbu'] == cbu_origen:
             card['saldo'] = str(obtener_saldo(lista_cards, cbu_origen) - saldo)
-            print("nuevo saldo del origen: ", card['saldo'])
+            print("Nuevo saldo del originante: ", card['saldo'])
             break
 
 # fun: obtiene el saldo del usuario
@@ -117,18 +117,18 @@ while True:
         cbu_origen = obtener_cbu(lista_cards, clave_user)
         break
     else:
-        print("\n❌ Error 🙁, contraseña no  válida")
+        print("\n❌ Error 🙁, contraseña no válida")
 
 while (lista_opciones['opciones'] != [] and respuesta == 'SI' and existe_clave(clave_user)):
-    print("respuesta", respuesta)
+    # print("respuesta", respuesta)
     print("\n+++++++++++++++++++++++++++++++++++++++++++++++++")
-    print("\t\t MENU DE OPCIONES")
+    print("\t MENÚ DE OPCIONES")
     print("+++++++++++++++++++++++++++++++++++++++++++++++++")
 
     for op in lista_opciones['opciones']:
         print("|------>", op['opcion'], "-", op['nombre'])
 
-    op_elegida = int(input("\nIngresa una opcion: "))
+    op_elegida = int(input("\nIngresá una opcion: "))
 
     for op in lista_opciones['opciones']:
         if op['opcion'] == op_elegida:
@@ -136,56 +136,56 @@ while (lista_opciones['opciones'] != [] and respuesta == 'SI' and existe_clave(c
             break
 
     match op_elegida: 
-        case 0:
+        case 0: # Deposito
             while True:
                 cbu_detination = input("Ingrese un CBU destino: ")
                 cbu_origen = obtener_cbu(lista_cards, clave_user)
                 # print(cbu_origen)
-                print("cbu_origen", cbu_origen)
+                # print("cbu_origen", cbu_origen)
                 if existe_cbu(cbu_detination) and existe_cbu(cbu_origen) :
-                    monto = int(input("Ingresa un monto 💲: "))
+                    monto = int(input("Ingresá un monto 💲: "))
                     incrementar_saldo(cbu_detination, monto)
                     decrementar_saldo(cbu_origen, monto)
-                    print("\n✅ Felicidades la operación de",op['nombre'], "se realizo con Exito!😀")
-                    print("\nDesea realaizar otra operación? SI o NO")
+                    print("\n✅ Felicidades! La operación de",op['nombre'], "se realizó con éxito!😀")
+                    print("\nDesea realizar otra operación? SI o NO")
                     respuesta = input().upper()
                     break
                 else:
-                    print("\n❌ Error 🙁, porfavor ingrese  un CBU válido")
-        case 1:
-            monto = input("Ingresa un monto 💲: ")
-            print("\n✅ Felicidades la operación de", op_elegida, "se realizo con Exito!😀")
-            print("\nDesea realaizar otra operación? SI o NO")
+                    print("\n❌ Error 🙁, por favor ingrese  un CBU válido")
+        case 1: # Extracción
+            monto = input("Ingresá un monto 💲: ")
+            print("\n✅ Felicidades! La operación de", op['nombre'], "se realizó con éxito!😀")
+            print("\nDesea realizar otra operación? SI o NO")
             respuesta = input().upper()
-        case 2:
+        case 2: # Transferencia
             while True:
                 cbu_detination = input("Ingrese un CBU destino: ")
                 if existe_cbu(cbu_detination) :
-                    monto = input("Ingresa un monto 💲: ")
+                    monto = input("Ingresá un monto 💲: ")
                     incrementar_saldo(cbu_detination, monto)
                     decrementar_saldo(cbu_origen, monto)
 
-                    print("\n✅ Felicidades la operación de", op_elegida, "se realizo con Exito!😀")
-                    print("\nDesea realaizar otra operación? SI o NO")
+                    print("\n✅ Felicidades! La operación de", op['nombre'], "se realizó con éxito!😀")
+                    print("\nDesea realizar otra operación? SI o NO")
                     respuesta = input().upper()
                     break
                 else:
-                    print("\n❌ Error 🙁, porfavor ingrese  un CBU válido")
+                    print("\n❌ Error 🙁, por favor ingrese  un CBU válido")
 
                     cbu_detination = input("Ingrese un CBU destino: ")           
-        case 3 :
+        case 3 : # Consultar saldo
             cbu_origen = obtener_cbu(lista_cards, clave_user)
-            print("caso 3: ", cbu_origen)
+            #print("caso 3: ", cbu_origen)
             saldo_origen = obtener_saldo(lista_cards, cbu_origen)
-            print(saldo_origen)
-            print("\nDesea realaizar otra operación? SI o NO")
+            print("El saldo de su cuenta es de💲:",saldo_origen)
+            print("\nDesea realizar otra operación? SI o NO")
             respuesta = input().upper()
-        case 4: 
+        case 4: # Consultar CBU
             print("\nEl CBU es:", obtener_cbu(lista_cards, clave_user))
-            print("\nDesea realaizar otra operación? SI o NO")
+            print("\nDesea realizar otra operación? SI o NO")
             respuesta = input().upper()
-        case 5:
+        case 5: # Salir
             print("GRACIAS POR ELEGIRNOS")
             respuesta = 'NO'
         case _:
-            print("\n❌ Error 🙁, porfavor ingrese una opcion válida, del Menu de opciones")
+            print("\n❌ Error 🙁, por favor ingrese una opcion válida, del Menú de Opciones")
