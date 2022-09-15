@@ -77,6 +77,14 @@ def obtener_saldo(lista_cards, cbu):
             break
     return saldo_origen
 
+# fun: autodeposito
+def autodeposito(saldo):
+    for card in lista_cards['tarjetas']:
+        if card['cbu'] == cbu_origen:
+            card['saldo'] = str(obtener_saldo(lista_cards, cbu_origen) + saldo)
+            print("Nuevo saldo en cuenta:💲", card['saldo'])
+            break    
+
 # fun: verifica si exite la clave del usuario.
 def existe_clave(clave_user):
     lista_claves = []
@@ -138,6 +146,7 @@ while (lista_opciones['opciones'] != [] and respuesta == 'SI' and existe_clave(c
             while True:
                 cbu_detination = input("Ingrese un CBU destino: ")
                 cbu_origen = obtener_cbu(lista_cards, clave_user)
+                # print(cbu_origen)
                 print("cbu_origen", cbu_origen)
                 if existe_cbu(cbu_detination) and existe_cbu(cbu_origen) :
                     monto = int(input("Ingresa un monto 💲: "))
