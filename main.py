@@ -82,7 +82,7 @@ def autodeposito(saldo):
     for card in lista_cards['tarjetas']:
         if card['cbu'] == cbu_origen:
             card['saldo'] = str(obtener_saldo(lista_cards, cbu_origen) + saldo)
-            print("Nuevo saldo en cuenta: ", card['saldo'])
+            print("Nuevo saldo en cuenta:💲", card['saldo'])
             break    
 
 # fun: verifica si exite la clave del usuario.
@@ -151,21 +151,33 @@ while (lista_opciones['opciones'] != [] and respuesta == 'SI' and existe_clave(c
                 # print(cbu_origen)
                 #print("cbu_origen", cbu_origen)
                 if existe_cbu(cbu_detination) and existe_cbu(cbu_origen) and cbu_detination != cbu_origen:
-                    
-                    monto = int(input("Ingresa un monto 💲: "))
-                    incrementar_saldo(cbu_detination, monto)
-                    decrementar_saldo(cbu_origen, monto)
-                    print("\n✅ Felicidades la operación de",op['nombre'], "se realizo con Exito!😀")
-                    print("\nDesea realaizar otra operación? SI o NO")
-                    respuesta = input().upper()
-                    break
+                    monto = input("Ingresa un monto 💲: ")
+                    if monto.isnumeric():
+                        incrementar_saldo(cbu_detination, int(monto))
+                        print("\n✅ Felicidades la operación de",op['nombre'], "a terceros se realizo con Exito!😀")
+                        print("\nDesea realizar otra operación? SI o NO")
+                        respuesta = input().upper()
+                        break
+                    else:
+                        print("Por favor ingrese solo numeros")
+                        print("\nDesea realizar otra operación? SI o NO")
+                        respuesta = input().upper()
+                        break
                 elif existe_cbu(cbu_detination) and existe_cbu(cbu_origen) and cbu_detination == cbu_origen:
-                    monto = int(input("Ingresa un monto 💲: "))
-                    autodeposito(monto)
-                    print("\n✅ Felicidades la operación de",op['nombre'], "a su cuenta se realizo con Exito!😀")
-                    print("\nDesea realaizar otra operación? SI o NO")
-                    respuesta = input().upper()
-                    break
+                    monto = input("Ingresa un monto 💲: ")
+                    if monto.isnumeric():
+                        autodeposito(int(monto))
+                        print("\n✅ Felicidades la operación de",op['nombre'], "a su cuenta se realizo con Exito!😀")
+                        print("\nDesea realizar otra operación? SI o NO")
+                        respuesta = input().upper()
+                        break 
+                    else:
+                        print("Por favor ingrese solo numeros")
+                        print("\nDesea realizar otra operación? SI o NO")
+                        respuesta = input().upper()
+                        break
+
+                    
                 else:
                     print("\n❌ Error 🙁, porfavor ingrese  un CBU válido")
         case 1:
