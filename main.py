@@ -103,6 +103,7 @@ def encriptar(clave_user):
     clave_encriptada = ' '
     for i in range(len(clave_user)):
         clave_encriptada += '*'
+    print(clave_encriptada)
     return clave_encriptada
 
 # fun: mensaje de bienvenida para el usuario.
@@ -119,7 +120,7 @@ while True:
     clave_user = input()
     if existe_clave(clave_user):
         e = encriptar(clave_user)
-        print("Encriptado de clave: ", e)
+        print("Encriptado", e)
         mensaje(lista_cards, clave_user)
         cbu_origen = obtener_cbu(lista_cards, clave_user)
         break
@@ -127,6 +128,7 @@ while True:
         print("\n❌ Error 🙁, contraseña no  válida")
 
 while (lista_opciones['opciones'] != [] and respuesta == 'SI' and existe_clave(clave_user)):
+    print("respuesta", respuesta)
     print("\n+++++++++++++++++++++++++++++++++++++++++++++++++")
     print("\t\t MENU DE OPCIONES")
     print("+++++++++++++++++++++++++++++++++++++++++++++++++")
@@ -147,15 +149,35 @@ while (lista_opciones['opciones'] != [] and respuesta == 'SI' and existe_clave(c
                 cbu_detination = input("Ingrese un CBU destino: ")
                 cbu_origen = obtener_cbu(lista_cards, clave_user)
                 # print(cbu_origen)
-                print("cbu_origen", cbu_origen)
-                if existe_cbu(cbu_detination) and existe_cbu(cbu_origen) :
-                    monto = int(input("Ingresa un monto 💲: "))
-                    incrementar_saldo(cbu_detination, monto)
-                    decrementar_saldo(cbu_origen, monto)
-                    print("\n✅ Felicidades la operación de",op['nombre'], "se realizo con Exito!😀")
-                    print("\nDesea realaizar otra operación? SI o NO")
-                    respuesta = input().upper()
-                    break
+                #print("cbu_origen", cbu_origen)
+                if existe_cbu(cbu_detination) and existe_cbu(cbu_origen) and cbu_detination != cbu_origen:
+                    monto = input("Ingresa un monto 💲: ")
+                    if monto.isnumeric():
+                        incrementar_saldo(cbu_detination, int(monto))
+                        print("\n✅ Felicidades la operación de",op['nombre'], "a terceros se realizo con Exito!😀")
+                        print("\nDesea realizar otra operación? SI o NO")
+                        respuesta = input().upper()
+                        break
+                    else:
+                        print("Por favor ingrese solo numeros")
+                        print("\nDesea realizar otra operación? SI o NO")
+                        respuesta = input().upper()
+                        break
+                elif existe_cbu(cbu_detination) and existe_cbu(cbu_origen) and cbu_detination == cbu_origen:
+                    monto = input("Ingresa un monto 💲: ")
+                    if monto.isnumeric():
+                        autodeposito(int(monto))
+                        print("\n✅ Felicidades la operación de",op['nombre'], "a su cuenta se realizo con Exito!😀")
+                        print("\nDesea realizar otra operación? SI o NO")
+                        respuesta = input().upper()
+                        break 
+                    else:
+                        print("Por favor ingrese solo numeros")
+                        print("\nDesea realizar otra operación? SI o NO")
+                        respuesta = input().upper()
+                        break
+
+                    
                 else:
                     print("\n❌ Error 🙁, porfavor ingrese  un CBU válido")
         case 1:
