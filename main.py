@@ -153,10 +153,18 @@ while (lista_opciones['opciones'] != [] and respuesta == 'SI' and existe_clave(c
                 else:
                     print("\n❌ Error 🙁, porfavor ingrese  un CBU válido")
         case 1:
-            monto = input("Ingresa un monto 💲: ")
-            print("\n✅ Felicidades la operación de", op_elegida, "se realizo con Exito!😀")
-            print("\nDesea realaizar otra operación? SI o NO")
-            respuesta = input().upper()
+            monto = int(input("Ingresa un monto 💲: "))
+            saldo_origen = int(obtener_saldo(lista_cards, cbu_origen))
+            cbu_origen = obtener_cbu(lista_cards, clave_user)
+            if monto <= saldo_origen:
+                decrementar_saldo(cbu_origen,monto)
+                print("\n✅ Felicidades la operación de", op['nombre'], "se realizo con Exito!😀")
+                print("\nDesea realizar otra operación? SI o NO")
+                respuesta = input().upper()
+            else:
+                print("Usted no posee saldo suficiente para realizar la operación")
+                print("\nDesea realizar otra operación? SI o NO")
+                respuesta = input().upper()
         case 2:
             while True:
                 cbu_detination = input("Ingrese un CBU destino: ")
