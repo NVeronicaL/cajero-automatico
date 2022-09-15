@@ -77,6 +77,14 @@ def obtener_saldo(lista_cards, cbu):
             break
     return saldo_origen
 
+# fun: autodeposito
+def autodeposito(saldo):
+    for card in lista_cards['tarjetas']:
+        if card['cbu'] == cbu_origen:
+            card['saldo'] = str(obtener_saldo(lista_cards, cbu_origen) + saldo)
+            print("Nuevo saldo en cuenta:💲", card['saldo'])
+            break    
+
 # fun: verifica si exite la clave del usuario.
 def existe_clave(clave_user):
     lista_claves = []
@@ -95,7 +103,6 @@ def encriptar(clave_user):
     clave_encriptada = ' '
     for i in range(len(clave_user)):
         clave_encriptada += '*'
-    print(clave_encriptada)
     return clave_encriptada
 
 # fun: mensaje de bienvenida para el usuario.
@@ -112,7 +119,7 @@ while True:
     clave_user = input()
     if existe_clave(clave_user):
         e = encriptar(clave_user)
-        print("Encriptado", e)
+        print("Encriptado de clave: ", e)
         mensaje(lista_cards, clave_user)
         cbu_origen = obtener_cbu(lista_cards, clave_user)
         break
@@ -120,7 +127,6 @@ while True:
         print("\n❌ Error 🙁, contraseña no  válida")
 
 while (lista_opciones['opciones'] != [] and respuesta == 'SI' and existe_clave(clave_user)):
-    print("respuesta", respuesta)
     print("\n+++++++++++++++++++++++++++++++++++++++++++++++++")
     print("\t\t MENU DE OPCIONES")
     print("+++++++++++++++++++++++++++++++++++++++++++++++++")
