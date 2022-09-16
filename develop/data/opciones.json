@@ -1,0 +1,28 @@
+{
+    "opciones": [
+        {
+            "nombre": "DEPOSITO",
+            "opcion": 0
+        },
+        {
+            "nombre": "EXTRACCION",
+            "opcion": 1
+        },
+        {
+            "nombre": "TRANSFERENCIA",
+            "opcion": 2
+        },
+        {
+            "nombre": "CONSULTAR SALDO",
+            "opcion": 3
+        },
+        {
+            "nombre": "CONSULTAR CBU",
+            "opcion": 4
+        },
+        {
+            "nombre": "SALIR",
+            "opcion": 5
+        }
+    ]
+}

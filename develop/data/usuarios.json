@@ -1,0 +1,34 @@
+{
+    "usuarios" : [
+        {
+            "nombre": "VERONICA",
+            "apellido": "LEAÑO",
+            "dni": "37245591"
+        },
+        {
+            "nombre": "BiANCA MADELEN",
+            "apellido": "ALARCON",
+            "dni": "68782412"
+        },
+        {
+            "nombre": "GiULIANA ISABEL",
+            "apellido": "COSTA",
+            "dni": "91872507"
+        },
+        {
+            "nombre": "MARCOS ALEJANDRO",
+            "apellido": "RIOS",        
+            "dni": "91872507"
+        },
+        {
+            "nombre": "FACUNDO MARTIN",
+            "apellido": "GARCIA",
+            "dni": "35813799"
+        },
+        {
+            "nombre": "AGUSTIN",
+            "apellido": "PONCE",
+            "dni": "31510392"
+        }
+    ]
+}
