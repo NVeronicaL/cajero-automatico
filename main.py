@@ -128,7 +128,7 @@ while True:
         print("\n❌ Error 🙁, contraseña no  válida")
 
 while (lista_opciones['opciones'] != [] and respuesta == 'SI' and existe_clave(clave_user)):
-    print("respuesta", respuesta)
+    #print("respuesta", respuesta)
     print("\n+++++++++++++++++++++++++++++++++++++++++++++++++")
     print("\t\t MENU DE OPCIONES")
     print("+++++++++++++++++++++++++++++++++++++++++++++++++")
@@ -154,6 +154,7 @@ while (lista_opciones['opciones'] != [] and respuesta == 'SI' and existe_clave(c
                     monto = input("Ingresa un monto 💲: ")
                     if monto.isnumeric():
                         incrementar_saldo(cbu_detination, int(monto))
+                        decrementar_saldo(cbu_origen, int(monto))
                         print("\n✅ Felicidades la operación de",op['nombre'], "a terceros se realizo con Exito!😀")
                         print("\nDesea realizar otra operación? SI o NO")
                         respuesta = input().upper()
@@ -198,8 +199,8 @@ while (lista_opciones['opciones'] != [] and respuesta == 'SI' and existe_clave(c
                 cbu_detination = input("Ingrese un CBU destino: ")
                 if existe_cbu(cbu_detination) :
                     monto = input("Ingresa un monto 💲: ")
-                    incrementar_saldo(cbu_detination, monto)
-                    decrementar_saldo(cbu_origen, monto)
+                    incrementar_saldo(cbu_detination, int(monto))
+                    decrementar_saldo(cbu_origen, int(monto))
 
                     print("\n✅ Felicidades la operación de", op_elegida, "se realizo con Exito!😀")
                     print("\nDesea realaizar otra operación? SI o NO")
