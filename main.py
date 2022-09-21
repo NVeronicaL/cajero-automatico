@@ -55,7 +55,7 @@ def incrementar_saldo(cbu_detination, saldo):
     for card in lista_cards['tarjetas']:
         #print(card)
         if card['cbu'] == cbu_detination:
-            card['saldo'] = str(obtener_saldo(lista_cards, cbu_detination) + saldo)
+            card['saldo'] = obtener_saldo(lista_cards, cbu_detination) + saldo
             print("nuevo saldo del destinacion: ", card['saldo'])
             break
 
@@ -64,7 +64,7 @@ def decrementar_saldo(cbu_origen, saldo):
     for card in lista_cards['tarjetas']:
         #print(card)
         if card['cbu'] == cbu_origen:
-            card['saldo'] = str(obtener_saldo(lista_cards, cbu_origen) - saldo)
+            card['saldo'] = obtener_saldo(lista_cards, cbu_origen) - saldo
             print("nuevo saldo del origen: ", card['saldo'])
             break
 
@@ -73,7 +73,7 @@ def obtener_saldo(lista_cards, cbu):
     saldo_origen = 0
     for card in lista_cards['tarjetas']:
         if card['cbu'] == cbu:
-            saldo_origen = int(card['saldo'])
+            saldo_origen = card['saldo']
             break
     return saldo_origen
 
@@ -81,7 +81,7 @@ def obtener_saldo(lista_cards, cbu):
 def autodeposito(saldo):
     for card in lista_cards['tarjetas']:
         if card['cbu'] == cbu_origen:
-            card['saldo'] = str(obtener_saldo(lista_cards, cbu_origen) + saldo)
+            card['saldo'] = obtener_saldo(lista_cards, cbu_origen) + saldo
             print("Nuevo saldo en cuenta:💲", card['saldo'])
             break    
 
@@ -183,7 +183,7 @@ while (lista_opciones['opciones'] != [] and respuesta == 'SI' and existe_clave(c
                     print("\n❌ Error 🙁, porfavor ingrese  un CBU válido")
         case 1:
             monto = int(input("Ingresa un monto 💲: "))
-            saldo_origen = int(obtener_saldo(lista_cards, cbu_origen))
+            saldo_origen = obtener_saldo(lista_cards, cbu_origen)
             cbu_origen = obtener_cbu(lista_cards, clave_user)
             if monto <= saldo_origen:
                 decrementar_saldo(cbu_origen,monto)
